@@ -15,36 +15,23 @@
             <div class="column">
                 <div class="photo"></div>
             </div>
-            <div class="column">
-                <div class="photo"></div>
-            </div>
-            <div class="column">
-                <div class="photo"></div>
-            </div>
         </div>
     </div>
 
     <script>
-        const columns = document.querySelectorAll('.column');
+        const column = document.querySelector('.column');
 
-        columns.forEach((column, columnIndex) => {
-            const fragment = document.createDocumentFragment();
+        for (let i = 0; i < 300; i++) {
+            const imgIndex = i + 601;
 
-            const start = columnIndex * 200 + 601;
-            const end = start + 200;
-
-            for (let i = start; i < end; i++) {
-                if (i < 900) {
-                    const img = document.createElement('img');
-                    const imgsrc =`images/${i}-200x200.png`
-                    img.src = imgsrc;
-                    img.alt = `Image ${i}`;
-                    fragment.appendChild(img);
-                }
+            if (imgIndex < 900) {
+                const img = document.createElement('img');
+                const imgsrc = `images/${imgIndex}-200x200.png`;
+                img.src = imgsrc;
+                img.alt = `Image ${imgIndex}`;
+                column.querySelector('.photo').appendChild(img);
             }
-
-            column.querySelector('.photo').appendChild(fragment);
-        });
+        }
     </script>
 </body>
 </html>
