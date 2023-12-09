@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ovo je web stranica za testiranje brzine HTTP/2 protokola.</h1>
+    <div class="container">
+        <h2 class="title">
+            Galerija
+        </h2>
+        <div class="photo-gallery">
+            <div class="column">
+                <div class="photo"></div>
+            </div>
+            <div class="column">
+                <div class="photo"></div>
+            </div>
+            <div class="column">
+                <div class="photo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const columns = document.querySelectorAll('.column');
+
+        columns.forEach((column, columnIndex) => {
+            const fragment = document.createDocumentFragment();
+
+            const start = columnIndex * 200 + 601;
+            const end = start + 200;
+
+            for (let i = start; i < end; i++) {
+                if (i < 900) {
+                    const img = document.createElement('img');
+                    const imgsrc =`images/${i}-200x200.png`
+                    img.src = imgsrc;
+                    img.alt = `Image ${i}`;
+                    fragment.appendChild(img);
+                }
+            }
+
+            column.querySelector('.photo').appendChild(fragment);
+        });
+    </script>
+</body>
+</html>
